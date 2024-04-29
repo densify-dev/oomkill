@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: main-oom-forked
+  namespace: oom
+spec:
+  containers:
+  - image: densify/memeater
+    imagePullPolicy: Always
+    name: memeater
+    command: ["/home/densify/bin/fork-eatmem.sh"]
+    resources:
+      limits:
+        cpu: 1
+        memory: 96Mi
+      requests:
+        cpu: 1
+        memory: 96Mi
+#  restartPolicy: Never
+  restartPolicy: OnFailure

@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-oom-forked
+  namespace: oom
+spec:
+  containers:
+  - image: alpine:latest
+    command:
+      - /bin/sh
+      - "-c"
+      - "sleep 60m"
+    imagePullPolicy: IfNotPresent
+    name: alpine
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "1000m"
+  - image: densify/memeater
+    imagePullPolicy: Always
+    name: memeater
+    command: ["/home/densify/bin/fork-eatmem.sh"]
+    resources:
+      limits:
+        cpu: 1
+        memory: 96Mi
+      requests:
+        cpu: 1
+        memory: 96Mi
+#  restartPolicy: Never
+  restartPolicy: OnFailure

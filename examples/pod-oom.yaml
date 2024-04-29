@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: main-oom
+  namespace: oom
+spec:
+  containers:
+  - image: densify/memeater
+    imagePullPolicy: Always
+    name: memeater
+    resources:
+      limits:
+        cpu: 1
+        memory: 128Mi
+      requests:
+        cpu: 1
+        memory: 128Mi
+#  restartPolicy: Never
+  restartPolicy: OnFailure
