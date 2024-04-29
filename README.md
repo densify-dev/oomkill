@@ -35,12 +35,12 @@ The configuration parameters are all passed to the shell scripts as environment 
 
 | Environment Variable | Explanation                                               | Default Value | Main               | Forked             |
 | -------------------- | --------------------------------------------------------- | ------------- | ------------------ | ------------------ |
-| OUTER_SEQ            | memory consumption outer loop range                       | 1,000         | :white_check_mark: | :white_check_mark: |
-| INNER_SEQ            | memory consumption inner loop range                       | 100,000       | :white_check_mark: | :white_check_mark: |
-| LOOP_INTERVAL  | memory consumption loop sleep (microseconds)              | 1,000,000     | :white_check_mark: | :white_check_mark: |
-| AFTER_LOOP_INTERVAL  | sleep after memory consumption loop (seconds)             | 2,600         | :white_check_mark: | :white_check_mark: |
-| BEFORE_FORK_INTERVAL | sleep before forking memory consumption process (seconds) | 10            |                    | :white_check_mark: |
-| AFTER_FORK_INTERVAL  | sleep after forked process exits (seconds)                | 360           |                    | :white_check_mark: |
+| `OUTER_SEQ`            | memory consumption outer loop range                       | 1,000         | :white_check_mark: | :white_check_mark: |
+| `INNER_SEQ`            | memory consumption inner loop range                       | 100,000       | :white_check_mark: | :white_check_mark: |
+| `LOOP_INTERVAL`  | memory consumption loop sleep (microseconds)              | 1,000,000     | :white_check_mark: | :white_check_mark: |
+| `AFTER_LOOP_INTERVAL`  | sleep after memory consumption loop (seconds)             | 2,600         | :white_check_mark: | :white_check_mark: |
+| `BEFORE_FORK_INTERVAL` | sleep before forking memory consumption process (seconds) | 10            |                    | :white_check_mark: |
+| `AFTER_FORK_INTERVAL`  | sleep after forked process exits (seconds)                | 360           |                    | :white_check_mark: |
 
 ## Examples
 
