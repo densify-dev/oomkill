@@ -1,5 +1,6 @@
-FROM alpine:3.19
+FROM alpine:3.20
 
+RUN apk add stress-ng
 RUN addgroup -g 3000 densify && adduser -h /home/densify -s /bin/sh -u 3000 -G densify -g "" -D densify && chmod 755 /home/densify
 
 WORKDIR /home/densify

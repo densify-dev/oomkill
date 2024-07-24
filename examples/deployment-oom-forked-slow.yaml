@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pme-forked-slow
+  namespace: oom
+  labels:
+    app: pme-forked-slow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pme-forked-slow
+  template:
+    metadata:
+      labels:
+        app: pme-forked-slow
+    spec:
+      containers:
+      - name: pme-forked-server
+        image: densify/memeater
+        imagePullPolicy: Always
+        command: ["/home/densify/bin/fork-eatmem.sh"]
+        env:
+        - name: OUTER_SEQ
+          value: "20000"
+        - name: INNER_SEQ
+          value: "14000"
+        - name: LOOP_INTERVAL
+          value: "10000000"
+        resources:
+          limits:
+            cpu: 1
+            memory: 96Mi
+          requests:
+            cpu: 1
+            memory: 96Mi

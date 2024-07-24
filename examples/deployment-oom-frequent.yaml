@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pme-frequent
+  namespace: oom
+  labels:
+    app: pme-frequent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pme-frequent
+  template:
+    metadata:
+      labels:
+        app: pme-frequent
+    spec:
+      containers:
+      - name: pme-server
+        image: densify/memeater
+        imagePullPolicy: Always
+        env:
+        - name: OUTER_SEQ
+          value: "10000"          
+        - name: INNER_SEQ
+          value: "16800"
+        resources:
+          limits:
+            cpu: 1
+            memory: 96Mi
+          requests:
+            cpu: 1
+            memory: 96Mi

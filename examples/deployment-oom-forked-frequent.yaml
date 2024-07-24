@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pme-forked-frequent
+  namespace: oom
+  labels:
+    app: pme-forked-frequent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pme-forked-frequent
+  template:
+    metadata:
+      labels:
+        app: pme-forked-frequent
+    spec:
+      containers:
+      - name: pme-forked-server
+        image: densify/memeater
+        imagePullPolicy: Always
+        command: ["/home/densify/bin/fork-eatmem.sh"]
+        env:
+        - name: OUTER_SEQ
+          value: "10000"          
+        - name: INNER_SEQ
+          value: "16800"
+        resources:
+          limits:
+            cpu: 1
+            memory: 96Mi
+          requests:
+            cpu: 1
+            memory: 96Mi

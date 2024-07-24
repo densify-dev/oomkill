@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pme-slow
+  namespace: oom
+  labels:
+    app: pme-slow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pme-slow
+  template:
+    metadata:
+      labels:
+        app: pme-slow
+    spec:
+      containers:
+      - name: pme-server
+        image: densify/memeater
+        imagePullPolicy: Always
+        env:
+        - name: OUTER_SEQ
+          value: "20000"
+        - name: INNER_SEQ
+          value: "14000"
+        - name: LOOP_INTERVAL
+          value: "10000000"
+        resources:
+          limits:
+            cpu: 1
+            memory: 96Mi
+          requests:
+            cpu: 1
+            memory: 96Mi
